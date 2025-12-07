@@ -18,6 +18,11 @@ int range_comp(const void* a, const void* b) {
 
 int main(int argc, char* argv[]) {
     FILE* fp = fopen("input.txt", "r");
+    if (fp == NULL) {
+        perror("Error opening input.txt");
+        return EXIT_FAILURE;
+    }
+
     char* line = NULL;
     size_t cap = 0;
     ssize_t len;
@@ -57,5 +62,6 @@ int main(int argc, char* argv[]) {
 
     printf("%lld", res);
 
+    free(line);
     return EXIT_SUCCESS;
 }
